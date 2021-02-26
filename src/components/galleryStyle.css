@@ -1,0 +1,165 @@
+.header {
+  font-size: 3rem;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  text-shadow: 0.1px 0.5px 2px rgba(0, 0, 0, 0.5);
+  padding-top: 10px;
+}
+
+.gallery-container {
+  max-width: 1000px;
+  padding: 50px 0;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.image-container {
+  cursor: pointer;
+}
+
+.image-container img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slider-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+.close-info {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  color: #cdcdcd;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.close-info i {
+  color: #fefefe;
+  font-size: 2rem;
+  margin-left: 20px;
+}
+
+.slider-wrapper {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+}
+
+.slider-container.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slider {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  max-width: 1000px;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide.nextSlide {
+  transform: translateX(150vw);
+}
+
+.slide.currentSlide {
+  transform: translateX(0);
+}
+
+.slide.prevSlide {
+  transform: translateX(-150vw);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.7);
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease-in;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.slide-right,
+.slide-left {
+  position: absolute;
+  top: calc(50% - 80px);
+  z-index: 3;
+}
+
+.slide-left {
+  left: 50px;
+}
+
+.slide-right {
+  right: 50px;
+}
+
+.slide-right i,
+.slide-left i {
+  color: #fff;
+  font-size: clamp(3rem, 8vw, 5rem);
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.close-btn i {
+}
+
+@media screen and (max-width: 1100px) {
+  .gallery-container,
+  .slider-container {
+    padding: 50px 20px;
+  }
+
+  .slide-right,
+  .slide-left {
+    position: absolute;
+    top: 90%;
+  }
+
+  .slide-right {
+    right: 30%;
+  }
+  .slide-left {
+    left: 30%;
+  }
+}
